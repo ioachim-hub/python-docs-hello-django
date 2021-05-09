@@ -83,6 +83,17 @@ DATABASES = {
 }
 """
 
+DATABASES = {
+
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'ioachimdb',
+        'USER': 'student',
+        'PASSWORD': '@.chiml999',
+        'HOST': 'ioachimdb.postgres.database.azure.com',
+        'PORT': '5432',
+    }
+}
 
 
 
