@@ -6,14 +6,14 @@ from .models import Sentiment
 
 
 def hello(request):
-    table = Sentiment.object.all()
+    table = Sentiment.objects.all()
     context = {
         'table' : table
     }
     return render(request, "home.html", context)
 
 def hello_submit(request):
-    table = Sentiment.object.all()
+    table = Sentiment.objects.all()
     context = {
         'table' : table
     }
