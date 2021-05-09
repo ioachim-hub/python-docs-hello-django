@@ -12,3 +12,9 @@ def hello(request):
     }
     return render(request, "home.html", context)
 
+def hello_submit(request):
+    table = Sentiment.object.all()
+    context = {
+        'table' : table
+    }
+    return render(request, "home.html", context)
