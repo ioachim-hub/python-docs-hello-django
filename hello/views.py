@@ -7,8 +7,8 @@ from .models import Sentiment
 
 def hello(request):
     table = Sentiment.object.all()
-    context = [
+    context = {
         'table' : table
-    ]
+    }
     return render(request, "home.html", context)
 
