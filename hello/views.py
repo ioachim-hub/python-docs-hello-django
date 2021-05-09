@@ -57,7 +57,7 @@ def hello_submit(request):
         
         local_file_name = str(uuid.uuid4()) + ".txt"
         
-        destination =  open(local_file_name, 'wb+')
+        destination =  open(local_file_name, 'w')
             
         destination.write(file)
             
