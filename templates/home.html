@@ -2,8 +2,51 @@
 <html>
   <head>
     <title> Sentiment Analysis </title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            width: auto;
+        }
+        th, td {
+            padding: 15px;
+        }
+        #t01 {
+            width: 100%;
+            background-color: #f1f1c1;
+        }
+        #t01 tr:nth-child(even) {
+            background-color: #eee;
+        }
+        #t01 tr:nth-child(odd) {
+            background-color: #fff;
+        }
+        #t01 th {
+        color: white;
+            background-color: black;
+        }
+    </style>
   </head>
-  <body>
-    Hello
-  </body>
+  <body style="text-align: center;">
+    <h1> Hello to sentiment analysis</h1>
+    <h2> You have to upload your file here and we will tell you what we fell about it </h2>
+    <h3> Let's start! </h3>
+    
+    <div style="border: solid; width : 30%; margin: auto;">
+      <form method="post" action="/submit">
+        <label for="fname">Upload a file:</label>
+        <input type="file" id="file" name="file"><br><br>
+        <input type="submit" id="submit" name="submit">
+      </form>
+    </div>
+    <br>
+    <h2>And that's the history of the clients tries</h2>
+    <table id="t01">
+        <tr>
+            <th>No.</th>
+            <th>Link</th>
+            <th>Date and hour</th>
+            <th>Result</th>
+        </tr>
+    </table>
+   </body>
 </html>
