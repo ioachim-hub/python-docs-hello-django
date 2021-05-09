@@ -57,9 +57,9 @@ def hello_submit(request):
         
         local_file_name = str(uuid.uuid4()) + ".txt"
         
-        with open(local_file_name, 'wb+') as destination:
-            for chunk in file.chunks():
-                destination.write(chunk)
+        destination =  open(local_file_name, 'wb+')
+            
+        destination.write(file)
             
         destination.close()
         
