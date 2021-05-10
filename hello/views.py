@@ -12,7 +12,7 @@ from azure.storage.blob import BlobServiceClient
 key = "6ea67e20bec5465ea0e2123b72a80a34"
 endpoint = "https://ioachimsentiment.cognitiveservices.azure.com/"
 
-connect_str = "DefaultEndpointsProtocol=https;AccountName=sentimentfiles;AccountKey=C3trnsUDVc47gX1+j+LFnefsmGsoeavYCHgDpWdQ8CZ3u9eM/qBuqMmu66QR6Um/w9ZAIZKUHPH/YKL5HY7hLA==;EndpointSuffix=core.windows.net"
+connect_str = "DefaultEndpointsProtocol=https;AccountName=sentimentfiles;AccountKey=U0stv7+ORvDYPihq28MoIl+B1NZD4SGcu56xhW8UGgDFa6If+nILpTF2X8+gx+BfTuniYHvIC0PccB13jLUttA==;EndpointSuffix=core.windows.net"
 
 
 
