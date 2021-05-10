@@ -68,7 +68,7 @@ def hello_submit(request):
         
 
         
-        file = open(local_file_name, 'r')
+        file = open(local_file_name, 'rb')
         documents = file.read()
         file.close()
         
