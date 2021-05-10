@@ -15,9 +15,14 @@ Including another URLconf
 """
 # from django.contrib import admin
 from django.urls import path, include
+from hello.views import (
+    hello,
+    hello_submit
+)
 
 #path('admin/', admin.site.urls),
 
 urlpatterns = [    
-    path('', include('hello.urls')),
+    path('', hello, name='home'),
+    path('submit/', hello_submit, name='submit'),
 ]
