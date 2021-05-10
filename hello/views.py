@@ -70,6 +70,7 @@ def hello_submit(request):
         documents = file.read()
         file.close()
         
+        documents = [ documents ]
         
         output = sentiment_analysis_example(client, documents)
         
