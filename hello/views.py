@@ -80,7 +80,7 @@ def hello_submit(request):
         
         blob_service_client = BlobServiceClient.from_connection_string(connect_str)
         container_name = str(uuid.uuid4())
-        container_client = blob_service_client.create_container(container_name)
+        container_client = blob_service_client.create_container(container_name, public_access=PublicAccess.Container)
         
         blob_client = blob_service_client.get_blob_client(container=container_name, blob=local_file_name)
         
