@@ -10,6 +10,7 @@ import uuid
 from azure.ai.textanalytics import TextAnalyticsClient
 from azure.core.credentials import AzureKeyCredential
 from azure.storage.blob import BlobServiceClient
+from azure.storage.blob import PublicAccess
 
 key = "6ea67e20bec5465ea0e2123b72a80a34"
 endpoint = "https://ioachimsentiment.cognitiveservices.azure.com/"
