@@ -59,17 +59,12 @@ def sentiment_analysis_example(client, documents):
 def hello_submit(request):
     if request.method == 'POST':
         client = authenticate_client()
-        file = request.FILES.get('file')
+        file =  request.files['file']
         
         local_file_name = str(uuid.uuid4()) + ".txt"
        
-        with open(local_file_name, 'wb+') as destination:
-            for chunk in file.chunks():
-                destination.write(chunk)
-            
-        destination.close()
+        file.save(local_file_name)
         
-
         
         file = open(local_file_name, 'r')
         documents = file.read()
