@@ -85,7 +85,7 @@ def hello_submit(request):
         with open(local_file_name, "rb") as data:
             blob_client.upload_blob(data)
             
-        link = blob_client.Uri.AbsoluteUri
+        link = "https://sentimentfiles.blob.core.windows.net/" + container_name + "/" + local_file_name
         
         sentiment = Sentiment.objects.create(link     = link,
                                              data     = datetime.date,
