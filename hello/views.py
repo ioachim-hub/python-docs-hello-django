@@ -59,7 +59,7 @@ def sentiment_analysis_example(client, documents):
 def hello_submit(request):
     if request.method == 'POST':
         client = authenticate_client()
-        file = request.POST.get('file')
+        file = request.FILES.get('file')
         
         local_file_name = str(uuid.uuid4()) + ".txt"
         
