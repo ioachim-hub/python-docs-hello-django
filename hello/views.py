@@ -88,7 +88,7 @@ def hello_submit(request):
         link = "https://sentimentfiles.blob.core.windows.net/" + container_name + "/" + local_file_name
         
         sentiment = Sentiment.objects.create(link     = link,
-                                             date     = datetime.datetime.today(),
+                                             data     = datetime.datetime.today(),
                                              rezultat = output)
         sentiment.save()
         
