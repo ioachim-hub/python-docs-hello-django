@@ -83,10 +83,10 @@ def hello_submit(request):
         container_name = str(uuid.uuid4())
         container_client = blob_service_client.create_container(container_name, public_access=PublicAccess.Container)
         
-        blob_client = blob_service_client.get_blob_client(container=container_name, blob=local_file_name)
-        
+        blob = BlobClient.from_connection_string(conn_str=connect_str, container_name=container_name, blob_name=local_file_name)
+
         with open(local_file_name, "rb") as data:
-            blob_client.upload_blob(data)
+            blob.upload_blob(data)
             
         link = "https://sentimentfiles.blob.core.windows.net/" + container_name + "/" + local_file_name
         
