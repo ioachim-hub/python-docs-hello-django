@@ -5,6 +5,10 @@ from .models import Sentiment
 import datetime
 import uuid
 
+from azure.ai.textanalytics import TextAnalyticsClient
+from azure.core.credentials import AzureKeyCredential
+from azure.storage.blob import BlobServiceClient
+
 key = "6ea67e20bec5465ea0e2123b72a80a34"
 endpoint = "https://ioachimsentiment.cognitiveservices.azure.com/"
 
@@ -20,8 +24,6 @@ def hello(request):
         }
     return render(request, "home.html", context)
 
-from azure.ai.textanalytics import TextAnalyticsClient
-from azure.core.credentials import AzureKeyCredential
 
 
 def authenticate_client():
