@@ -63,12 +63,13 @@ def hello_submit(request):
         
         local_file_name = str(uuid.uuid4()) + ".txt"
        
-        file.save(local_file_name)
+        file_ = open(local_file_name, 'w')
+        file_.write(file)
+        file_.close()
         
-        
-        file = open(local_file_name, 'r')
-        documents = file.read()
-        file.close()
+        file_ = open(local_file_name, 'r')
+        documents = file_.read()
+        file_.close()
         
         documents = [ documents ]
         
