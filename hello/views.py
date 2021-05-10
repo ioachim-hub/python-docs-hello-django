@@ -68,7 +68,7 @@ def hello_submit(request):
         
 
         
-        file = open(local_file_name, 'rb')
+        file = open(local_file_name, 'r')
         documents = file.read()
         file.close()
         
@@ -82,7 +82,7 @@ def hello_submit(request):
         
         blob_client = blob_service_client.get_blob_client(container=container_name, blob=local_file_name)
         
-        with open(local_file_name, "r") as data:
+        with open(local_file_name, "rb") as data:
             blob_client.upload_blob(bytes(data, 'utf-8'))
             
         link = blob_client.url
