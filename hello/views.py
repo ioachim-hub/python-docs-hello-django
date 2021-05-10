@@ -13,10 +13,11 @@ connect_str = "DefaultEndpointsProtocol=https;AccountName=sentimentfiles;Account
 
 
 def hello(request):
-    table = Sentiment.objects.all()
-    context = {
-        'table' : table
-    }
+    if request.method == 'GET':
+        table = Sentiment.objects.all()
+        context = {
+            'table' : table
+        }
     return render(request, "home.html", context)
 
 from azure.ai.textanalytics import TextAnalyticsClient
