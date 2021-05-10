@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from .models import Sentiment
 
@@ -93,5 +93,5 @@ def hello_submit(request):
         sentiment.save()
         
         
-    return redirect("home")
+    return HttpResponseRedirect(reverse('home'))
 
