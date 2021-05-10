@@ -85,7 +85,7 @@ def hello_submit(request):
         with open(local_file_name, "rb") as data:
             blob_client.upload_blob(data)
             
-        link = blob_client.url
+        link = blob_client.Uri.AbsoluteUri
         
         sentiment = Sentiment.objects.create(link     = link,
                                              data     = datetime.date,
