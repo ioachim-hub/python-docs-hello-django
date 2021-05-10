@@ -48,7 +48,14 @@
             <th>Date and hour</th>
             <th>Result</th>
         </tr>
+      {% for rows in table %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td><a href="{{ rows.link }}">{{ rows.link }}</a></td>
+          <td>{{ rows.data }}</td>
+          <td>{{ rows.rezultat }}</td>
+        </tr>
+      {% endfor %}
     </table>
-    {{ table }}
    </body>
 </html>
