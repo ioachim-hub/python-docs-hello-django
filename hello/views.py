@@ -59,7 +59,6 @@ def sentiment_analysis_example(client, documents):
     a = search("Document Sentiment: {} Overall scores: positive={}; neutral={}; negative={}.{}{}", mesaj)
 
     sentencesaa = mesaj.split("Sentence: ")[1:]
-    parsed = parse(format_o, mesaj)
     sentimente = []
     for s in sentencesaa:
         parse_sentence = search("{} Sentence {} sentiment: {} Sentence score: Positive={} Neutral={} Negative={}.{}{}", s)
