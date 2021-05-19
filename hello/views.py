@@ -12,6 +12,8 @@ from azure.core.credentials import AzureKeyCredential
 from azure.storage.blob import BlobServiceClient, BlobClient
 from azure.storage.blob import PublicAccess
 
+from parse import *
+
 key = "6ea67e20bec5465ea0e2123b72a80a34"
 endpoint = "https://ioachimsentiment.cognitiveservices.azure.com/"
 
@@ -53,7 +55,32 @@ def sentiment_analysis_example(client, documents):
             sentence.confidence_scores.neutral,
             sentence.confidence_scores.negative,
         )
-    return mesaj
+        
+    a = search("Document Sentiment: {} Overall scores: positive={}; neutral={}; negative={}.{}{}", mesaj)
+
+    sentencesaa = mesaj.split("Sentence: ")[1:]
+    parsed = parse(format_o, mesaj)
+    sentimente = []
+    for s in sentencesaa:
+        parse_sentence = search("{} Sentence {} sentiment: {} Sentence score: Positive={} Neutral={} Negative={}.{}{}", s)
+        sentiment = {
+            'sentence' : parse_sentence[0],
+            'overall'  : parse_sentence[2],
+            'positive' : parse_sentence[3],
+            'neutral'  : parse_sentence[4],
+            'negative' : str(parse_sentence[5]) + "." + str(parse_sentence[6]) + str(parse_sentence[7]),
+        }
+        sentimente.append(sentiment)
+
+    document = {
+        'overall'  : a[0],
+        'positive' : a[1],
+        'negative' : str(a[3]) + "." + str(a[4]) + str(a[5]),
+        'neutral'  : a[2],
+        'senteces' : sentimente
+    }
+
+    return document
 
 
 def hello_submit(request):
