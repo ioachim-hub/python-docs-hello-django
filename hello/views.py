@@ -24,6 +24,7 @@ connect_str = "DefaultEndpointsProtocol=https;AccountName=sentimentfiles;Account
 def hello(request):
     if request.method == 'GET':
         table = Sentiment.objects.all()
+        print(table)
         context = {
             'table' : table
         }
@@ -41,45 +42,22 @@ def authenticate_client():
 def sentiment_analysis_example(client, documents):
     response = client.analyze_sentiment(documents=documents)[0]
     mesaj = ""
-    mesaj += "Document Sentiment: {} \n".format(response.sentiment)
-    mesaj += "Overall scores: positive={0:.2f}; neutral={1:.2f}; negative={2:.2f} \n".format(
+    mesaj += "Document Sentiment: {} <br>".format(response.sentiment)
+    mesaj += "Overall scores: positive={0:.2f}; neutral={1:.2f}; negative={2:.2f} <br>".format(
         response.confidence_scores.positive,
         response.confidence_scores.neutral,
         response.confidence_scores.negative,
     )
     for idx, sentence in enumerate(response.sentences):
-        mesaj += "Sentence: {} \n".format(sentence.text) 
-        mesaj += "Sentence {} sentiment: {} \n".format(idx+1, sentence.sentiment)
-        mesaj += "Sentence score:\nPositive={0:.2f}\nNeutral={1:.2f}\nNegative={2:.2f}\n".format(
+        mesaj += "Sentence: {} <br>".format(sentence.text) 
+        mesaj += "Sentence {} sentiment: {} <br>".format(idx+1, sentence.sentiment)
+        mesaj += "Sentence score:\nPositive={0:.2f}<br>Neutral={1:.2f}<br>Negative={2:.2f}<br>".format(
             sentence.confidence_scores.positive,
             sentence.confidence_scores.neutral,
             sentence.confidence_scores.negative,
         )
         
-    a = search("Document Sentiment: {} Overall scores: positive={}; neutral={}; negative={}.{}{}", mesaj)
-
-    sentencesaa = mesaj.split("Sentence: ")[1:]
-    sentimente = []
-    for s in sentencesaa:
-        parse_sentence = search("{} Sentence {} sentiment: {} Sentence score: Positive={} Neutral={} Negative={}.{}{}", s)
-        sentiment = {
-            'sentence' : parse_sentence[0],
-            'overall'  : parse_sentence[2],
-            'positive' : parse_sentence[3],
-            'neutral'  : parse_sentence[4],
-            'negative' : str(parse_sentence[5]) + "." + str(parse_sentence[6]) + str(parse_sentence[7]),
-        }
-        sentimente.append(sentiment)
-
-    document = {
-        'overall'  : a[0],
-        'positive' : a[1],
-        'negative' : str(a[3]) + "." + str(a[4]) + str(a[5]),
-        'neutral'  : a[2],
-        'senteces' : sentimente
-    }
-
-    return document
+    return mesaj
 
 
 def hello_submit(request):
