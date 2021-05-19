@@ -42,20 +42,22 @@ def authenticate_client():
 def sentiment_analysis_example(client, documents):
     response = client.analyze_sentiment(documents=documents)[0]
     mesaj = ""
-    mesaj += "Document Sentiment: {} <br>".format(response.sentiment)
-    mesaj += "Overall scores: positive={0:.2f}; neutral={1:.2f}; negative={2:.2f} <br>".format(
+    mesaj += "Document Sentiment: <b>{}</b> <br>".format(response.sentiment)
+    mesaj += "Overall scores: positive=<b>{0:.2f}</b>; neutral=<b>{1:.2f}</b>; negative=<b>{2:.2f}</b> <br>".format(
         response.confidence_scores.positive,
         response.confidence_scores.neutral,
         response.confidence_scores.negative,
     )
+    mesaj += "---------------------<br>"
     for idx, sentence in enumerate(response.sentences):
-        mesaj += "Sentence: {} <br>".format(sentence.text) 
-        mesaj += "Sentence {} sentiment: {} <br>".format(idx+1, sentence.sentiment)
-        mesaj += "Sentence score:\nPositive={0:.2f}<br>Neutral={1:.2f}<br>Negative={2:.2f}<br>".format(
+        mesaj += "Sentence: <b>{}</b> <br>".format(sentence.text) 
+        mesaj += "Sentence {} sentiment: <b>{}</b> <br>".format(idx+1, sentence.sentiment)
+        mesaj += "Sentence score:<br>Positive=<b>{0:.2f}</b> Neutral=<b>{1:.2f}</b> Negative=<b>{2:.2f}</b><br>".format(
             sentence.confidence_scores.positive,
             sentence.confidence_scores.neutral,
             sentence.confidence_scores.negative,
         )
+        mesaj += "---------------------<br>"
         
     return mesaj
 
