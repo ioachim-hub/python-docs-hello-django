@@ -53,7 +53,13 @@
           <td>{{ forloop.counter }}</td>
           <td><a href="{{ rows.link }}">{{ rows.link }}</a></td>
           <td>{{ rows.data }}</td>
-          <td>{{ rows.rezultat }}</td>
+          <td>
+            overall: {{ rows.rezultat['overall'] }} positive: {{ rows.rezultat['positive'] }} negative: {{ rows.rezultat['negative'] }} neutral: {{ rows.rezultat['neutral'] }}<br>
+          {% for sentence in rows.rezultat['sentences'] %}
+            overall: {{ sentence['overall'] }} positive: {{ sentence['positive'] }}  negative: {{ sentence['negative'] }} neutral: {{ sentence['neutral'] }}<br>
+            sentence: {{ sentence['sentence'] }}<br><br>
+          {% endfor %}
+          </td>
         </tr>
       {% endfor %}
     </table>
