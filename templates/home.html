@@ -53,12 +53,11 @@
           <td>{{ forloop.counter }}</td>
           <td><a href="{{ rows.link }}">{{ rows.link }}</a></td>
           <td>{{ rows.data }}</td>
-          <td>
-            overall: {{ rows.rezultat|safe|escape }}
+          <td style="text-align: left;">
+            {{ rows.rezultat|safe|escape }}
           </td>
         </tr>
       {% endfor %}
     </table>
    </body>
 </html>
-
