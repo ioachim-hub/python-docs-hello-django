@@ -1,63 +1,61 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
   <head>
-    <title> Sentiment Analysis </title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Sentiment Analysis</title>
+    <link rel="stylesheet" href="{% static '/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700">
+    <link rel="stylesheet" href="{% static '/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static '/fonts/material-icons.min.css' %}">
+    <link rel="stylesheet" href="{% static '/css/Login-Form-Dark.css' %}">
+    <link rel="stylesheet" href="{% static '/css/Registration-Form-with-Photo.css' %}">
     <style>
-        table, th, td {
-            border: 1px solid black;
-            width: auto;
-        }
-        th, td {
-            padding: 15px;
-        }
-        #t01 {
-            width: 100%;
-            background-color: #f1f1c1;
-        }
-        #t01 tr:nth-child(even) {
-            background-color: #eee;
-        }
-        #t01 tr:nth-child(odd) {
-            background-color: #fff;
-        }
-        #t01 th {
-        color: white;
-            background-color: black;
-        }
+      table, th, td {
+        border: 5px solid black;
+      }
+      
     </style>
   </head>
-  <body style="text-align: center;">
+  <body style="text-align: center; background: var(--gray-dark); color: aliceblue;">
     <h1> Hello to sentiment analysis</h1>
     <h2> You have to upload your file here and we will tell you what we fell about it </h2>
     <h3> Let's start! </h3>
     
     <div style="border: solid; width : 30%; margin: auto;">
-      <form method="post" action="submit/" enctype="multipart/form-data">
+      <form method="post" style="border-radius: 13px;border-style: none;border-color: var(--white);" action="submit/" enctype="multipart/form-data">
         {% csrf_token %}
-        <label for="fname">Upload a file:</label>
-        <input type="file" id="file" name="file" accept=".txt" ><br><br>
-        <input type="submit" id="submit" name="submit">
+        <div class="form-group d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-start justify-content-sm-start justify-content-md-start justify-content-lg-start justify-content-xl-start align-items-xl-center"><label for="fname">Upload a file:</label></div>
+        <div class="form-group"><input class="form-control d-xl-flex" style="background-color: var(--gray-dark);" type="file" id="file" name="file" accept=".txt" ></div><br><br>
+        <div class="form-group text-right"><input type="submit" class="btn btn-primary btn-lg" id="submit" name="submit"></div>
       </form>
     </div>
     <br>
     <h2>And that's the history of the clients trials</h2>
-    <table id="t01">
-        <tr>
-            <th>No.</th>
-            <th>Link</th>
-            <th>Date and hour</th>
-            <th>Result</th>
-        </tr>
-      {% for rows in table %}
-        <tr>
-          <td>{{ forloop.counter }}</td>
-          <td><a href="{{ rows.link }}">{{ rows.link }}</a></td>
-          <td>{{ rows.data }}</td>
-          <td style="text-align: left;">
-            {{ rows.rezultat|safe|escape }}
-          </td>
-        </tr>
-      {% endfor %}
-    </table>
+    <div style="overflow-x:auto; height:500px; display:block;">
+      <table class="table-responsive">
+          <tr>
+              <th>No.</th>
+              <th>Link</th>
+              <th>Date and hour</th>
+              <th>Result</th>
+          </tr>
+        {% for rows in table %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td><a href="{{ rows.link }}">{{ rows.link }}</a></td>
+            <td>{{ rows.data }}</td>
+            <td style="text-align: left;">
+              {{ rows.rezultat|safe|escape }}
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
    </body>
 </html>
