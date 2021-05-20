@@ -38,6 +38,7 @@
         <thead>
           <tr>
               <th>No.</th>
+              <th>Filename</th>
               <th>Link</th>
               <th>Date and hour</th>
               <th>Result</th>
@@ -46,6 +47,7 @@
         {% for rows in table %}
           <tr>
             <td>{{ forloop.counter }}</td>
+            <td>{{ rows.name }}</td>
             <td><a href="{{ rows.link }}">{{ rows.link }}</a></td>
             <td>{{ rows.data }}</td>
             <td style="text-align: left;">
