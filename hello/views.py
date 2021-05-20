@@ -66,7 +66,7 @@ def hello_submit(request):
     if request.method == 'POST':
         client = authenticate_client()
         file =  request.FILES.get('file')
-        
+        filename =  request.FILES.get('file').name
         local_file_name = str(uuid.uuid4()) + ".txt"
        
         with open(local_file_name, 'wb+') as destination:
@@ -93,7 +93,8 @@ def hello_submit(request):
             
         link = "https://sentimentfiles.blob.core.windows.net/" + container_name + "/" + local_file_name
         
-        sentiment = Sentiment.objects.create(link     = link,
+        sentiment = Sentiment.objects.create(name     = filename,
+                                             link     = link,
                                              data     = datetime.datetime.today(),
                                              rezultat = output)
         sentiment.save()
