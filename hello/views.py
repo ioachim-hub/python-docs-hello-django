@@ -69,12 +69,12 @@ def hello_submit(request):
         filename =  request.FILES.get('file').name
         local_file_name = str(uuid.uuid4()) + ".txt"
        
-        with open(local_file_name, 'wb+') as destination:
+        with open('out.txt', 'wb+') as destination:
             for chunk in file.chunks():
                 destination.write(chunk)
         destination.close()
         
-        file_ = open(local_file_name, 'r')
+        file_ = open('out.txt', 'r')
         documents = file_.read()
         file_.close()
         
