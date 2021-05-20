@@ -81,19 +81,6 @@ DATABASES = {
     }    
 }
 
-"""
-DATABASES = {
-
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ioachimdb',
-        'USER': 'student',
-        'PASSWORD': '@.chiml999',
-        'HOST': 'ioachimdb.postgres.database.azure.com',
-        'PORT': '5432',
-    }
-}
-"""
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
